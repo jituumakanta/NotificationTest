@@ -30,6 +30,8 @@ public class Notification {
     }
 
     public void showNotification() {
+
+        //using NotificationCompat.Builder
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_launcher_background)
@@ -45,6 +47,20 @@ public class Notification {
         // Add as notification
         NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
+
+       // or
+        // Notification.Builder
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context);
+        android.app.Notification noti ;
+        noti= mBuilder
+                .setContentTitle("New mail from " + "sender")
+                .setContentText("subject")
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, noti);
+
 
 
     }
